@@ -24,9 +24,8 @@ namespace Bank_Account {
 		}
 
 		// Method to add interest paid to account balance
-		public decimal AddInterest(decimal intpaid) {
-			Balance = (Balance + intpaid);
-			return Balance;
+		public void AddInterest(decimal intpaid) {
+			Balance += intpaid;
 		}
 
 

@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Bank_Account {
-	class Account {
+	abstract class Account {
 
 		public string AccountNumber { get; set; }
 		public string AccountHolder { get; set; }
-		public decimal Balance { get; set; }
+		public decimal Balance { get; protected set; } = 0.0m;
 
 
 		// Default class constructor
@@ -18,22 +18,36 @@ namespace Bank_Account {
 		}
 
 		// Enhanced class constructor
-		public Account(string accountid, string accountholder, decimal balance) {
+		public Account(string accountid, string accountholder) {
 			AccountNumber = accountid;
 			AccountHolder = accountholder;
-			Balance = balance;
 		}
 
 		// withdrawa Method
-		public decimal Withdraw(decimal withdraw) {
+		public void Withdraw(decimal withdraw) {
+			if(withdraw <=0) {
+				Console.WriteLine("Amount must be greater than 0");
+				return;
+			}
+
+			if(withdraw > Balance) {
+				Console.WriteLine("Amount must be less than Balance");
+				return;
+			}
 			Balance -= withdraw;
-			return Balance;
 		}
 
 		// Deposit Method
-		public decimal Deposit(decimal deposit) {
+		public void Deposit(decimal deposit) {
+			if (deposit  <= 0) {
+				Console.WriteLine("Amount must be greater than 0");
+				return;
+			}
 			Balance += deposit;
-			return Balance;
+		}
+
+		public decimal GetBalance() {
+			return decimal.Round(Balance, 2);
 		}
 
 	
