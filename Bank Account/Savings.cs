@@ -16,13 +16,14 @@ namespace Bank_Account {
 			InterestRate = interestrate;
 		}
 
-
+		// Method to find interest paid based on Instance specified interest rate
 		public decimal InterestPaid(decimal balance) {
 			decimal IntPaid;
 			IntPaid = (InterestRate * balance);
 			return IntPaid;
 		}
 
+		// Method to add interest paid to account balance
 		public decimal AddInterest(decimal intpaid) {
 			Balance = (Balance + intpaid);
 			return Balance;
